@@ -1,0 +1,838 @@
+<!-- >>FROM bsform.html 12.5.2022 FRI -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PTT Software Co...Ltd</title>
+
+    <!-- bootstrap cs1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <!-- fontawesome css1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style type="text/css">
+        .banners {
+            height: 100vh;
+            /* gradien - ပေါ်များ အောက်နည်း အရောင်ပြတ် */
+            background: linear-gradient(20deg, steelblue 30%, skyblue 30%);
+            /* backgroundsizeရဲ့ 50%ပဲ ယူလိုက်တော့ ပေးထားတဲ့ gradient colorတွေက
+        bgsizeရဲ့ 50%လောက်ပဲ သက်ရောက်၍ ထပ်သွား */
+            background-size: 5%;
+            transition: all 2s;
+        }
+        
+        .banners:hover {
+            background-size: 5.5%;
+            background-position: center;
+        }
+        
+        .cardhovers:hover {
+            box-shadow: -7px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .maps {
+            width: 100%;
+            height: 50vh;
+            /*height: 300px;*/
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Note for project developing -->
+    <!-- 1. main elementမှာ commandပေးရင် capital letterနဲ့ စရေးပါ
+elementတွေမှာ ဆိုရင်တော့ small letterနဲ့ ရေးပါ -->
+    <!-- BS selectornames margin, paddingတွေကို အခြားselectornameတွေရဲ့ နောက်မှာ ရေးပါ။ -->
+
+    <!-- >> 13.5.2022 (FRI) Att Code- 13BP-->
+    <!-- Start Header Section -->
+    <header>
+        <!-- Start navbar -->
+        <!-- selectornames 
+        >> navbar 
+        >>  navbar-brand(projectTitleကို ပေးလေ့ရှိ), 
+        >> navbar-expand-md - nabarကို screensize "md" sizeရောက်တဲ့အခါမှ
+                                               ချဲ့ထုတ် -->
+        <!-- >> navbar-nav       - ulရှိ <li>တွေကို အလျားလိုက်ပြပေး, navbarထဲက nav-->
+        <!-- >> nav-item   - navbar-nav ပေးထားတဲ့ elementရဲ့ childElementကိုပေး -->
+        <!-- >> nav-link - nav-itemရှိ linkတွေကို ပေးနိုင်, 
+                         >> navbar-colorname - "navbar" selectnameပေးထားသော parentElementမှာ ပေးလိုက်ရင် navbarထဲရှိ colorတွေကို
+                        navbar-colornameမှာ သတ်မှတ်ထားသော bgcolorနဲ့ သင့်တော်သော colorပေး  -->
+        <!-- >> fixed-top - navbarကို အပေါ်ဆုံးမှာပဲ ကပ်နေချင်ရင် -->
+
+        <!-- for humberger dropdown list -->
+        <!-- >> navbar-toggler-icon >> BSရှိ humberger icon, <i>နဲ့ ရေး -->
+        <!-- >> navbar-toggler   - humbergerIconကို နှိပ်ရင် listကျလာမှာဖြစ်၍ functionတခုထဲမှာ 
+                                        featureနှစ်ခုရှိသောကြောင့် "data-bs-toggle" selectornameနဲ့ တွဲပေး
+           >> data-bs-toggle   - burberger iconမှာ လုပ်မယ့် featureကို ရေးမယ်, listကို ချုံ့မှာ ဖြစ်လို့
+                                        "collapse" valueပေး
+           >> data-bs-target   - burbergerIconကို နှိပ်ရင် ပေါ်မယ့် listက elementတခုသပ်သပ်ကွဲထွက်နေ၍
+                                        ၎င်းelementနဲ့ burbergerIconကို ပြန်ချိတ်ပေးရမယ်, ၎င်းအတွက် ဒီ selectorကို
+                                      သုံးခြင်းဖြစ်, valueက ချိတ်မှာ listမှာ ပေးထားတဲ့ idnameကို #နဲ့ ခေါ်ရမယ်(burgerIconကို 
+                                      <a>ထဲ ထည့်ထားရင်တော့ hrefနဲ့ ချိတ်၍ ရသော်လည်း <button>ထဲ ထည့်ထား၍)
+           >> navbar-collapse  - burbergerIconကို နှိပ်ရင် ကျလာမယ့် listကို  navbarရဲ့ အောက်ဘက်ကို ရွှေ့လိုက်တာ, 
+           burbergerIconကို နှိပ်ရင် ကျလာမယ့် listမှာပေး, navbar-collapseမှာ display:flex; propပါပြီးသား ထို့ကြောင့် ၎င်းelementမှာ justify-content-betweenထည့်ထားသော်လည်း
+           "row" or "d-flex"သပ်သပ်ထည့်စရာလို 
+           >> collapse         - burbergerIconကို နှိပ်ရင် ကျလာမယ့် listကို သတ်မှတ်ထားသော screensizeရောက်ရင် စစချင်းမှာ collapseလုပ်ထားစေချင်လို့, 
+                                 -->
+
+        <!-- >> text-uppercase  - CSSရှိ text-transform:uppercase;နဲ့တူ
+                        >> fw-bold         - CSSရှိ font-weight:bold;နဲ့တူ -->
+
+        <!-- for  dropdown menu                   -->
+        <!-- 
+           >> dropdown - dropdownရဲ့ parementElementကို ပေး-->
+        <!-- >> dropdown-toggle - နှိပ်ရာမှာ dropdownListကျလာဖို့ သုံးရမှာ ဖြစ်လို့ ဒီselectornameကို
+        <li>မှာ မရေးဘဲ <a>မှာရေး, functionတခုထဲမှာ featuresနှစ်ခုပါလို့ data-bs-toggleနဲ့ တွဲရေး
+           >> data-bs-toggle="dropdown"
+           >> dropdown-menu - dropdownကျမယ့် listအတွက်
+           >> dropdown-item - dropdownကျမယ့် list-itemအတွက် -->
+
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+            <a href="index.html" class="navbar-brand mx-3">
+                <img src="./img/icon.jpg" width="50px" alt="sitelogo" />
+                <span class="ms-2">PTT Software Co...Ltd</span>
+            </a>
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+          <i class="navbar-toggler-icon"></i>
+        </button>
+
+            <!-- =>justify-content-between
+        selectorname >> justify-content-between, childElementတွေကြားထဲကို spaceထားလိုက်တာ -->
+
+            <!-- id="nav"ကို data-bs-targetနဲ့ ချိတ်
+        nabar-collapse - menuရဲ့ ဘယ်ဘက်ထောင့် အောက်ဘက်ကို ရွှေ့ပေး,
+        သတ်မှတ်ထားသော screensize ရောက်ရင် ကျုံ့/ collapseလုပ်ပေးမယ် -->
+            <div id="nav" class="navbar-collapse collapse justify-content-between">
+                <ul class="navbar-nav px-3">
+                    <li class="nav-item">
+                        <a href="#home" id="" class="nav-link text-uppercase fw-bold text-light">Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="#clients"
+                id=""
+                class="nav-link text-uppercase fw-bold text-light"
+                >Clients</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="#about"
+                id=""
+                class="nav-link text-uppercase fw-bold text-light"
+                >About</a
+              >
+            </li>
+            <!-- bs dropwdown -->
+            <!-- arrow iconအတွက် dropdown-toggle -->
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                id=""
+                class="nav-link text-uppercase fw-bold text-light dropdown-toggle"
+                data-bs-toggle="dropdown"
+                >Software</a
+              >
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#software" class="dropdown-item">Android App</a>
+                    </li>
+                    <li><a href="#software" class="dropdown-item">IOS App</a></li>
+                    <li><a href="#software" class="dropdown-item">Linux App</a></li>
+                    <li>
+                        <a href="#software" class="dropdown-item">Windows App</a>
+                    </li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#pricing" id="" class="nav-link text-uppercase fw-bold text-light">Pricing</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="#contact"
+                id=""
+                class="nav-link text-uppercase fw-bold text-light"
+                >Contact</a
+              >
+            </li>
+          </ul>
+
+          <div class="px-3">
+            <button type="button" class="btn btn-outline-light btn-sm">
+              Sign-up
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- End navbar -->
+
+      <!-- Start banner  -->
+
+      <section>
+        <div class="container-fluid">
+          <!-- >> justify-content-center - CSSရှိ justify-content:center;နဲ့တူ
+          >> align-items-center     - CSSရှိ align-items:center;နဲတူ
+          ၎င်းတို့ နှစ်ခုက "row" or "d-flex"ပါမှ အလုပ်လုပ် -->
+
+          <!-- bs selectornameနဲ့ CSS classnameမရောစေရန် CSS classnameကို အများကိန်း "s"နဲ့ရေးပြီး selectornameတွေရဲ့ နောက်ဆုံးမှာထား -->
+
+          <!-- >> text-center = CSS text-align:center;
+               >> text-capitalize = CSS text-transform:capitalize;
+               >> fsc-italic = CSS font-style:italic;
+               >> fw-light   = CSS font-weight:300;-->
+          <div
+            class="row justify-content-center align-items-center banners"
+            style="height: 100vh"
+          >
+            <div class="col-md-10 text-center">
+              <h1 class="text-capitalize display-2">
+                <span class="fw-bold text-primary">PTT</span>
+                <span class="text-white">software development company</span>
+              </h1>
+              <h2 class="text-white fst-italic fw-light">
+                We help companies to digitalize their business.
+              </h2>
+              <p class="text-secondary">
+                Properly set process. Trapsparent cooperation. Predictable
+                delivery.
+              </p>
+              <a href="#" class="btn btn-warning btn-lg rounded-0 px-4 mt-3" data-bs-toggle="modal" data-bs-target="#loginmodal"
+                >Get In Touch</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- End banner -->
+
+      <!-- Start Client Section -->
+      <section id="clients" class="bg-light p-5">
+        <div class="container-fluid">
+          <!-- Start Title -->
+
+          <!--col-12 ဘယ် screensizeမှာမဆို columns 12အပြည့်ယူမယ် -->
+          <!-- => lead -->
+          <!-- selectorname >> lead - display-numberနဲ့ ဆင်တူပေမယ့် leadက စာလုံးမကြီးပေး
+          စာလုံးတွေကြားပဲ spaceခြားပေး -->
+
+          <!-- => mx-auto 
+        selectorname >> mx-auto - margin horizontalကို browserပေါ်မူတည်၍ 
+        သင့်တော်သလို ခြားပေး -->
+
+          <!-- >> text-muted - text-secondaryနဲ့ ဆင်တူ -->
+          <div class="col-12 text-center">
+            <h1 class="text-warning display-3">Our Clients</h1>
+            <p class="text-muted lead">
+              Projects We Successfully Developed. One look is worth a thousand
+              words.
+            </p>
+          </div>
+          <!-- End Title -->
+
+          <div class="row text-center">
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+              <!-- BS card
+          
+          parentElement -> card
+          for body      -> card-body
+          -->
+              <div class="card bg-info cardhovers">
+                <div class="card-body">
+                  <h5 class="card-title">Toyota</h5>
+                  <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard
+                  </p>
+                  <a href="#" class="card-link">Website</a>
+                    <a href="#" class="card-link">Contact</a>
+            </div>
+            </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-info cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">Mazda</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-info cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">Suzuki</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-info cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">KIA</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-warning cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">Mi</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-warning cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">Iphone</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-warning cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">Sony</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mx-auto mb-5">
+                <div class="card bg-warning cardhovers">
+                    <div class="card-body">
+                        <h5 class="card-title">Oppo</h5>
+                        <h6 color="card-subtitle mb-2 text-muted">Vehicles</h6>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        </p>
+                        <a href="#" class="card-link">Website</a>
+                        <a href="#" class="card-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <hr />
+            </div>
+            </section>
+            <!-- End Client Section -->
+    </header>
+    <!-- End Header Section -->
+
+    <!-- >> 19.5.2022 (THU) Att Code - -->
+    <!-- Start Software Section -->
+    <section>
+        <!-- start title -->
+        <div class="col-12 text-center">
+            <h1 class="text-warning display-3 mt-5">Software</h1>
+            <!-- => lead ?? -->
+            <p class="text-muted lead">
+                We design any interfaces for different types of projects and devices.
+            </p>
+        </div>
+        <!-- end title -->
+
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <img src="https://st1.bgr.in/wp-content/uploads/2018/10/android-green-lego-poster-googleblog.jpg" alt="" class="img-thumbnail" />
+                <h3 class="text-warning my-3">Android Application</h3>
+                <p class="text-muted">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <img src="https://mytechmyanmar.com/wp-content/uploads/2020/04/appstore.jpg" alt="" class="img-thumbnail" />
+                <h3 class="text-warning my-3">IOS Application</h3>
+                <p class="text-muted">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <img src="https://i.ytimg.com/vi/8WbyB_2HthM/maxresdefault.jpg" alt="" class="img-thumbnail" />
+                <h3 class="text-warning my-3">Linux Application</h3>
+                <p class="text-muted">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <img src="https://i.pcmag.com/imagery/lineups/06xskoAKsVIlA7WdtvUGQmT-1.1577756249.fit_lim.size_1182x667.jpg" alt="" class="img-thumbnail" />
+                <h3 class="text-warning my-3">Windows Application</h3>
+                <p class="text-muted">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- End Software Section -->
+
+    <!-- Start Team Section -->
+    <section id="about" class="bg-secondary p-4">
+        <div class="container-fluid">
+            <!-- start title -->
+            <div class="col-12 text-center">
+                <h1 class="text-warning display-3 mt-5">Team</h1>
+                <!-- => lead ?? -->
+                <p class="text-muted lead">
+                    We design any interfaces for different types of projects and devices.
+                </p>
+            </div>
+            <!-- end title -->
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-10 mx-auto mb-4">
+                    <div class="card">
+                        <img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/2021/01/Sam-CF.jpg" alt="user1">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3>
+                                    Mr.Min Khant Ko Ko
+                                </h3>
+
+                            </div>
+                            <div class="card-subtitle">
+                                <p class="lead">Founder And CEO</p>
+                            </div>
+
+                            <div class="float-end">
+                                <a href="#"><i class="fab fa-facebook fa-2x text-primary"></i></a>
+                                <a href="#"><i class="fab fa-twitter fa-2x text-info"></i></a>
+                                <a href="#"><i class="fab fa-youtube fa-2x text-danger"></i></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-4 col-sm-10 mx-auto mb-4">
+                    <div class="card">
+                        <img src="https://www.boemagazine.com/wp-content/uploads/2019/11/blur-businesswoman-caucasian-941555.jpg" alt="user2">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3>
+                                    Mr.Min Khant Ko Ko
+                                </h3>
+
+                            </div>
+                            <div class="card-subtitle">
+                                <p class="lead">Founder And CEO</p>
+                            </div>
+                            <!--  float end so ho bk byy kat twr ml -->
+                            <div class="float-end">
+                                <a href="#"><i class="fab fa-facebook fa-2x text-primary"></i></a>
+                                <a href="#"><i class="fab fa-twitter fa-2x text-info"></i></a>
+                                <a href="#"><i class="fab fa-youtube fa-2x text-danger"></i></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="col-lg-4 col-sm-10 mx-auto mb-4">
+                    <div class="card">
+                        <img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/2021/01/what-is-the-difference-web-developer-web-designer.jpg" alt="user3">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3>
+                                    Mr.Min Khant Ko Ko
+                                </h3>
+
+                            </div>
+                            <div class="card-subtitle">
+                                <p class="lead">Founder And CEO</p>
+                            </div>
+
+                            <div class="float-end">
+                                <a href="#"><i class="fab fa-facebook fa-2x text-primary"></i></a>
+                                <a href="#"><i class="fab fa-twitter fa-2x text-info"></i></a>
+                                <a href="#"><i class="fab fa-youtube fa-2x text-danger"></i></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- End Team Section -->
+    <!-- Start Public Interest Section -->
+    <section id="about" class="p-4">
+
+        <div class="container-fluid">
+            <!-- Strat Title -->
+            <div class="col-12 text-center">
+                <h1 class="text-warning display-3">Public Interest</h1>
+                <p class="text-muted lead">We design any interfaces for different types of projects and devices.</p>
+            </div>
+
+            <!-- End Title -->
+
+            <div class="row">
+
+                <div class="col-lg-6 col-sm-10 mx-auto">
+
+                    <h3>Ebook</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary progress-bar-striped" style="width:25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+
+                    <h3>Android Application</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-secondary progress-bar-striped" style="width:25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+
+                    <h3>IOS Application</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-success progress-bar-striped" style="width:15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">15%</div>
+                    </div>
+
+                    <h3>Linux Application</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger progress-bar-striped" style="width:5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
+                    </div>
+
+                    <h3>Window Application</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-info progress-bar-striped" style="width:30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- End Public Interest Section -->
+
+    <!-- Start Pricing Section -->
+    <section id="pricing" class="bg-secondary p-4">
+        <div class="container-fluid">
+            <!-- Strat Title -->
+            <div class="col-12 text-center">
+                <h1 class="text-warning display-3">Pricing</h1>
+                <p class="text-light lead">We design any interfaces for different types of projects and devices.</p>
+            </div>
+
+            <!-- End Title -->
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="card text-center mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-secondary text-uppercase">Blog Site / Free</h5>
+                            <h6>$0/month</h6>
+                            <hr/>
+                            <ul class="list-group">
+                                <li class="list-group-item">Single User</li>
+                                <li class="list-group-item">5GB Storage</li>
+                                <li class="list-group-item">Unlimited Public Projects</li>
+                                <li class="list-group-item">Community Access</li>
+                                <li class="list-group-item">Unlimited Private Projects</li>
+                                <li class="list-group-item">Dedicated Phone Support</li>
+                                <li class="list-group-item">Free Subdomain</li>
+                                <li class="list-group-item">Monthly Status Reports</li>
+                            </ul>
+                            <hr/>
+
+                            <div class="d-grid">
+                                <a href="#" class="btn btn-warning text-uppercase">Checkout</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="card text-center mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-secondary text-uppercase">Ecommerce Site / Plus</h5>
+                            <h6>$9/month</h6>
+                            <hr/>
+                            <ul class="list-group">
+                                <li class="list-group-item fw-bold">5 User</li>
+                                <li class="list-group-item">5GB Storage</li>
+                                <li class="list-group-item">Unlimited Public Projects</li>
+                                <li class="list-group-item">Community Access</li>
+                                <li class="list-group-item">Unlimited Private Projects</li>
+                                <li class="list-group-item">Dedicated Phone Support</li>
+                                <li class="list-group-item">Free Subdomain</li>
+                                <li class="list-group-item">Monthly Status Reports</li>
+                            </ul>
+                            <hr/>
+
+                            <div class="d-grid">
+                                <a href="#" class="btn btn-warning text-uppercase">Checkout</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="card text-center mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-secondary text-uppercase">Dynamic Site / Free</h5>
+                            <h6>$49/month</h6>
+                            <hr/>
+                            <ul class="list-group">
+                                <li class="list-group-item fw-bold">Unlimited User</li>
+                                <li class="list-group-item">5GB Storage</li>
+                                <li class="list-group-item">Unlimited Public Projects</li>
+                                <li class="list-group-item">Community Access</li>
+                                <li class="list-group-item">Unlimited Private Projects</li>
+                                <li class="list-group-item">Dedicated Phone Support</li>
+                                <li class="list-group-item"><strong>Unlimited</strong>Free Subdomain</li>
+                                <li class="list-group-item">Monthly Status Reports</li>
+                            </ul>
+                            <hr/>
+
+                            <div class="d-grid">
+                                <a href="#" class="btn btn-warning text-uppercase">Checkout</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+    <!-- End Pricing Section -->
+
+    <!-- Start Contact us Section -->
+    <section id="contact">
+        <div class="container-fluid">
+            <!-- Strat Title -->
+            <div class="col-12 text-center">
+                <h1 class="text-warning display-3">Contact Us</h1>
+                <p class="text-muted lead">We design any interfaces for different types of projects and devices.</p>
+            </div>
+
+            <!-- End Title -->
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Office Location</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3700.7270980627054!2d96.11485839999999!3d21.9450404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb6dc4fa6a35e3%3A0xf90b09f267699462!2sHnin%20Si%20Khin!5e0!3m2!1sen!2smm!4v1653014653137!5m2!1sen!2smm"
+                                class="maps"></iframe>
+                        </div>
+
+                        <div class="card-footer">
+                            <p>Phone : 0942204225</p>
+                            <p>Email : info@ptt.com</p>
+                            <p>No.123,Aungsan St.Mandalay</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6 col-md-8 col-sm-10 mx-auto mt-5">
+                    <div class="text-center text-muted">
+                        <h3>Got Questions?</h3>
+                        <p>Stay Connected</p>
+                    </div>
+
+                    <form action="" method="">
+                        <div class="col-md-12 form-group mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control form-control-sm rounded-0" placeholder="Enter your name" />
+                        </div>
+
+                        <div class="col-md-12 form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control form-control-sm rounded-0" placeholder="Enter your email" />
+                        </div>
+
+                        <div class="col-md-12 form-group mb-3">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" class="form-control form-control-sm rounded-0" rows="3" placeholder="Enter your message here"></textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-warning rounded-0">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End Contact us Section -->
+
+    <!--  Start Footer Section -->
+    <footer class="bg-dark py-3">
+        <div class="container-fluid">
+
+          <!-- Start elfsight for viber -->
+                <script src="https://apps.elfsight.com/p/platform.js"></script>
+                <div class="elfsight-app-f7b2b647-bd64-4704-b64a-289718a5c5eb"></div>
+                <!-- End elfsight for viber -->
+
+            <div class="col-12">
+                <p class="text-light m-0">&copy; Copyright 2022<span class="autoyear"></span> - made by DLT Co.,Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- End Footer Section -->
+
+    <!-- Modal Size
+    (1) Standark Size
+        modal-xl
+        modal-lg
+        modal-md
+        modal-sm
+    
+    Full Size
+        modal-fullscreen
+        modal-fullscreen-sm-down
+        modal-fullscreen-md-down
+        modal-fullscreen-lg-down
+        modal-fullscreen-xl-down-->
+
+
+
+
+
+    <!-- START MODEL AREA -->
+
+    <!-- Start Get In Touch Modal -->
+
+    <div class="modal" id="loginmodal">
+
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Login Here</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="col-12">
+                        <form action="" method="">
+
+                            <div class="form-group mb-4">
+                                <label for="loginemail">Email</label>
+                                <input type="email" name="loginemail" id="loginemail" class="form-control form-control-sm rounded-0" placeholder="Enter your email" />
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="loginpassword">Password</label>
+                                <input type="password" name="loginpassword" id="loginpassword" class="form-control form-control-sm rounded-0" placeholder="Enter your password" />
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="reset" class="btn btn-secondary btn-sm me-3">Cancel</button>
+                                <button type="reset" class="btn btn-primary btn-sm me-3">Login</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p>Not Register !,<a href="#">Sigup Here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Get In Touch Model -->
+
+    <!-- End MODEL AREA -->
+    <!-- bootstrap js1 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <!-- bootstrap js2 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+        const autoyear = document.getElementById('autoyear');
+        const getyear = new Date().getUTCFullYear();
+        autoyear.textContent = getyear;
+    </script>
+</body>
+
+</html>
